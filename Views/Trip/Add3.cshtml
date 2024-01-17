@@ -1,0 +1,23 @@
+@model ThingsToDo
+
+@{
+    ViewBag.Title = "Add Trip - Page 3";
+    ViewBag.SubHeader = $"Add Things To Do in {ViewBag.desName}";
+}
+
+<form asp-action="Add3">
+
+    <div class="form-group">
+        <input asp-for="ThingToDo1" class="form-control mb-2" />
+    </div>
+    <div class="form-group">
+        <input asp-for="ThingToDo2" class="form-control mb-2" />
+    </div>
+    <div class="form-group">
+        <input asp-for="ThingToDo3" class="form-control mb-2" />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-dark">Save</button>
+        <a asp-action="Cancel" class="btn btn-outline-dark">Cancel</a>
+    </div>
+</form>

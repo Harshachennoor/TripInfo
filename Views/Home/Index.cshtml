@@ -1,0 +1,64 @@
+﻿@model TripViewModel
+
+@{
+    ViewBag.Title = "My Trip Log";
+}
+
+<a asp-action="Add" asp-controller="Trip" class="btn btn-primary mb-2">Add New Trip</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Destination</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Accommodation</th>
+            <th>Things To Do</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            <tr>
+                <td>@Model.Destination</td>
+                <td>@Model.StartDate?.ToShortDateString()</td>
+                <td>@Model.EndDate?.ToShortDateString()</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(Model.Accommodation))
+                    {
+                        <div>@Model.Accommodation</div>
+                        @if (!string.IsNullOrEmpty(Model.AccommodationDetails.PhoneNumber))
+                        {
+                            <div>Phone: @Model.AccommodationDetails.PhoneNumber</div>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.AccommodationDetails.Email))
+                        {
+                            <div>Email: @Model.AccommodationDetails.Email</div>
+                        }
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(Model.ThingsToDoDetails?.ThingToDo1))
+                    {
+                        <div>@Model.ThingsToDoDetails.ThingToDo1</div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.ThingsToDoDetails?.ThingToDo2))
+                    {
+                        <div>@Model.ThingsToDoDetails.ThingToDo2</div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.ThingsToDoDetails?.ThingToDo3))
+                    {
+                        <div>@Model.ThingsToDoDetails.ThingToDo3</div>
+                    }
+                </td>
+            </tr>
+
+        }
+        else
+        {
+            <span>No records to show</span>
+        }
+    </tbody>
+</table>
+
